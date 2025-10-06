@@ -14,9 +14,9 @@ pipeline {
                 echo 'Compiling Java code...'
                 // Create bin folder if missing
                 bat 'if not exist bin mkdir bin'
-                
-                // Compile Java files inside src/demoPackage
-                bat 'javac -d bin src\\demoPackage\\Hello.java'
+
+                // Compile Java files with Java 8 compatibility
+                bat 'javac --release 8 -d bin src\\demoPackage\\Hello.java'
             }
         }
 
