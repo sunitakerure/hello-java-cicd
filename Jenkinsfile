@@ -4,31 +4,39 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out code from GitHub...'
                 checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Compile') {
             steps {
-                echo 'Compiling Java program...'
-                bat 'javac Hello.java'
+                echo 'Compiling Java code...'
+                // For Windows
+                bat 'javac -d bin src\\*.java'
+                
+               
+              
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program...'
-                use: bat 'java Hello'
+                // Replace 'Hello' with your main class name
+                bat 'java -cp bin Hello'
+
+              
             }
         }
     }
 
     post {
         success {
-            echo 'CI/CD pipeline executed successfully!'
+            echo 'Build and run completed successfully!'
         }
         failure {
-            echo 'Pipeline failed. Check errors!'
+            echo 'Build failed. Check errors above.'
         }
     }
 }
