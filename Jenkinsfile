@@ -12,31 +12,29 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java code...'
-                // For Windows
-                bat 'javac -d bin src\\*.java'
+                // Create bin folder if missing
+                bat 'if not exist bin mkdir bin'
                 
-               
-              
+                // Compile Java files inside src/demoPackage
+                bat 'javac -d bin src\\demoPackage\\Hello.java'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program...'
-                // Replace 'Hello' with your main class name
-                bat 'java -cp bin Hello'
-
-              
+                // Use full package name when running
+                bat 'java -cp bin demoPackage.Hello'
             }
         }
     }
 
     post {
         success {
-            echo 'Build and run completed successfully!'
+            echo '✅ Build and run completed successfully!'
         }
         failure {
-            echo 'Build failed. Check errors above.'
+            echo '❌ Build failed. Check errors above.'
         }
     }
 }
