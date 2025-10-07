@@ -2,11 +2,11 @@
 
 This project demonstrates a basic CI/CD pipeline for automation using Jenkins, Maven, Docker, and Selenium.
 
-Why this note in Jenkinsfile
+Why this note in Jenkinsfile:
 
-To explain each pipeline step clearly
+-> To explain each pipeline step clearly
 
-For easy understanding by others or future reference
+-> For easy understanding by others or future reference
 
 In Jenkinsfile
 //Linux / Mac
