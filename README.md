@@ -8,11 +8,9 @@ To explain each pipeline step clearly
 
 For easy understanding by others or future reference
 
+In Jenkinsfile
 //Linux / Mac
-# Compile with Java 8 compatibility
-javac --release 8 -d bin src/demoPackage/Hello.java
+sh 'java -cp bin demoPackage.Hello'
 
-# Run program
-java -cp bin demoPackage.Hello
 
 Jenkins pipeline automatically pulls, builds, tests, and deploys your project.
